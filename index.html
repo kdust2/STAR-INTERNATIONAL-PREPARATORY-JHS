@@ -121,6 +121,12 @@
         </div>
     </footer>
 
+    <!-- Lightbox for fullscreen images -->
+    <div class="lightbox-overlay" id="lightboxOverlay">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBTAA7" alt="" id="lightboxImage">
+    </div>
+
     <script>
         // Mobile menu toggle
         document.addEventListener('DOMContentLoaded', function() {
@@ -130,15 +136,41 @@
             // Mobile menu toggle
             mobileMenuBtn.addEventListener('click', function() {
                 navMenu.classList.toggle('show');
+            });
 
-            //Time 
-                function showTime() {
-	document.getElementById('currentTime').innerHTML = new Date().toUTCString();
-}
-showTime();
-setInterval(function () {
-	showTime();
-}, 1000);
+            //Time
+            function showTime() {
+                document.getElementById('currentTime').innerHTML = new Date().toUTCString();
+            }
+            showTime();
+            setInterval(function () {
+                showTime();
+            }, 1000);
+
+            // Lightbox: click a gallery image to view it fullscreen
+            const lightboxOverlay = document.getElementById('lightboxOverlay');
+            const lightboxImage = document.getElementById('lightboxImage');
+            const lightboxClose = document.getElementById('lightboxClose');
+
+            document.querySelectorAll('.gallery-item img').forEach(function(img) {
+                img.addEventListener('click', function() {
+                    lightboxImage.src = img.src;
+                    lightboxImage.alt = img.alt;
+                    lightboxOverlay.classList.add('active');
+                });
+            });
+
+            function closeLightbox() {
+                lightboxOverlay.classList.remove('active');
+                lightboxImage.src = '';
+            }
+
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightboxOverlay.addEventListener('click', function(e) {
+                if (e.target === lightboxOverlay) closeLightbox();
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeLightbox();
             });
         });
     </script>
