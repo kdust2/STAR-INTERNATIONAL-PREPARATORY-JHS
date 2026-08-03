@@ -238,6 +238,21 @@ nav ul li a:hover:after {
             background: #fff9e6;
             border-left: 3px solid var(--yellow);
         }
+
+        .calendar-day.today {
+            background: var(--blue);
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .calendar-day.today small {
+            color: var(--yellow);
+        }
+
+        .calendar-day.empty {
+            background: #fafafa;
+        }
         
         .calendar-day small {
             font-size: 0.7rem;
@@ -481,229 +496,14 @@ nav ul li a:hover:after {
     <!-- Calendar Page -->
     <section id="calendar" class="page-content">
         <div class="container">
-            <h2 class="section-title">School Calendar 2025-2026</h2>
+            <h2 class="section-title" id="calendarTitle">School Calendar</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem; color: #666;">This calendar always shows the current month plus the two months ahead, with today's date highlighted.</p>
 
-            <div class="calendar-container">
-                <div class="calendar-header">
-                    <h3>January 2026</h3>
-                </div>
-
-                <div class="calendar-grid">
-                    <div class="calendar-day-header">Sun</div>
-                    <div class="calendar-day-header">Mon</div>
-                    <div class="calendar-day-header">Tue</div>
-                    <div class="calendar-day-header">Wed</div>
-                    <div class="calendar-day-header">Thu</div>
-                    <div class="calendar-day-header">Fri</div>
-                    <div class="calendar-day-header">Sat</div>
-
-                    <!-- Empty days for the first week -->
-                    <div class="calendar-day"></div>
-                    <div class="calendar-day"></div>
-                    <div class="calendar-day"></div>
-                    <div class="calendar-day"></div>
-                    <div class="calendar-day">1</div>
-                    <div class="calendar-day">2</div>
-                    <div class="calendar-day">3</div>
-
-                    <div class="calendar-day">4</div>
-                    <div class="calendar-day">5</div>
-                    <div class="calendar-day">6</div>
-                    <div class="calendar-day">7</div>
-                    <div class="calendar-day">8</div>
-                    <div class="calendar-day">9</div>
-                    <div class="calendar-day">10</div>
-
-                    <div class="calendar-day">11</div>
-                    <div class="calendar-day event">12<br><small>Parent-Teacher Meeting</small></div>
-                    <div class="calendar-day">13</div>
-                    <div class="calendar-day">14</div>
-                    <div class="calendar-day event">15<br><small>Science Fair</small></div>
-                    <div class="calendar-day">16</div>
-                    <div class="calendar-day">17</div>
-
-                    <div class="calendar-day">18</div>
-                    <div class="calendar-day">19</div>
-                    <div class="calendar-day event">20<br><small>Sports Day</small></div>
-                    <div class="calendar-day event">21<br><small>Sports Day</small></div>
-                    <div class="calendar-day">22</div>
-                    <div class="calendar-day">23</div>
-                    <div class="calendar-day">24</div>
-
-                    <div class="calendar-day">25</div>
-                    <div class="calendar-day">26</div>
-                    <div class="calendar-day">27</div>
-                    <div class="calendar-day event">28<br><small>Art Exhibition</small></div>
-                    <div class="calendar-day">29</div>
-                    <div class="calendar-day">30</div>
-                    <div class="calendar-day">31</div>
-
-                    <div class="calendar-day event"><br><small>Our Day</small></div>
-                    <div class="calendar-day"></div>
-                    <div class="calendar-day"></div>
-                    <div class="calendar-day"></div>
-                    <div class="calendar-day"></div>
-                    <div class="calendar-day"></div>
-                    <div class="calendar-day"></div>
-                </div>
-            </div>
+            <div id="calendarMonths"></div>
 
             <div class="events-container">
                 <h3 style="text-align: center; color: var(--blue); margin-bottom: 1.5rem;">Upcoming Events</h3>
-
-                <div class="event-item">
-                    <div class="event-date">
-                        <div class="day">14</div>
-                        <div>JAN</div>
-                    </div>
-                    <div class="event-details">
-                        <h4>Annual Science Fair</h4>
-                        <p>Time: 9:00 AM - 3:00 PM | Venue: School Science Block</p>
-                    </div>
-                </div>
-
-                <div class="event-item">
-                    <div class="event-date">
-                        <div class="day">19-20</div>
-                        <div>JAN</div>
-                    </div>
-                    <div class="event-details">
-                        <h4>Annual Sports Day</h4>
-                        <p>Time: 8:00 AM - 4:00 PM | Venue: School Forecourt</p>
-                    </div>
-                </div>
-
-                <div class="event-item">
-                    <div class="event-date">
-                        <div class="day">27</div>
-                        <div>JAN</div>
-                    </div>
-                    <div class="event-details">
-                        <h4>Art Exhibition</h4>
-                        <p>Time: 10:00 AM - 2:00 PM | Venue: School Art Gallery</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Additional Calendar Months -->
-            <div class="calendar-container">
-                <div class="calendar-header">
-                    <h3>February 2026</h3>
-                </div>
-
-                <div class="calendar-grid">
-                    <div class="calendar-day-header">Sun</div>
-                    <div class="calendar-day-header">Mon</div>
-                    <div class="calendar-day-header">Tue</div>
-                    <div class="calendar-day-header">Wed</div>
-                    <div class="calendar-day-header">Thu</div>
-                    <div class="calendar-day-header">Fri</div>
-                    <div class="calendar-day-header">Sat</div>
-
-                    <div class="calendar-day">1</div>
-                    <div class="calendar-day">2</div>
-                    <div class="calendar-day">3</div>
-                    <div class="calendar-day">3</div>
-                    <div class="calendar-day">4</div>
-                    <div class="calendar-day">5</div>
-                    <div class="calendar-day">6</div>
-
-                    <div class="calendar-day">1</div>
-                    <div class="calendar-day">2</div>
-                    <div class="calendar-day">3</div>
-                    <div class="calendar-day">4</div>
-                    <div class="calendar-day">5</div>
-                    <div class="calendar-day">6</div>
-                    <div class="calendar-day">7</div>
-
-                    <div class="calendar-day">8</div>
-                    <div class="calendar-day">9</div>
-                    <div class="calendar-day">10</div>
-                    <div class="calendar-day">11</div>
-                    <div class="calendar-day">12</div>
-                    <div class="calendar-day">13</div>
-                    <div class="calendar-day">14</div>
-
-                    <div class="calendar-day">15</div>
-                    <div class="calendar-day">16</div>
-                    <div class="calendar-day">17</div>
-                    <div class="calendar-day event">18<br><small>Ramadan Start</small></div>
-                    <div class="calendar-day">19</div>
-                    <div class="calendar-day">20</div>
-                    <div class="calendar-day">21</div>
-
-                    <div class="calendar-day">22</div>
-                    <div class="calendar-day">23</div>
-                    <div class="calendar-day">24</div>
-                    <div class="calendar-day">25</div>
-                    <div class="calendar-day">26</div>
-                    <div class="calendar-day event">27<br><small>Cultural Day</small></div>
-                    <div class="calendar-day">28</div>
-
-                    <div class="calendar-day"></div>
-                    <div class="calendar-day"></div>
-                    <div class="calendar-day"></div>
-                    <div class="calendar-day"></div>
-                    <div class="calendar-day"></div>
-                    <div class="calendar-day"></div>
-                    <div class="calendar-day"></div>
-                </div>
-            </div>
-
-            <div class="calendar-container">
-                <div class="calendar-header">
-                    <h3>March 2026</h3>
-                </div>
-
-                <div class="calendar-grid">
-                    <div class="calendar-day-header">Sun</div>
-                    <div class="calendar-day-header">Mon</div>
-                    <div class="calendar-day-header">Tue</div>
-                    <div class="calendar-day-header">Wed</div>
-                    <div class="calendar-day-header">Thu</div>
-                    <div class="calendar-day-header">Fri</div>
-                    <div class="calendar-day-header">Sat</div>
-
-                    <div class="calendar-day">1</div>
-                    <div class="calendar-day">2</div>
-                    <div class="calendar-day">3</div>
-                    <div class="calendar-day">4</div>
-                    <div class="calendar-day">5</div>
-                    <div class="calendar-day event">6<br><small>Independence Day</small></div>
-                    <div class="calendar-day">7</div>
-
-                    <div class="calendar-day">8</div>
-                    <div class="calendar-day">9</div>
-                    <div class="calendar-day">10</div>
-                    <div class="calendar-day">11</div>
-                    <div class="calendar-day">12</div>
-                    <div class="calendar-day">13</div>
-                    <div class="calendar-day">14</div>
-
-                    <div class="calendar-day">15</div>
-                    <div class="calendar-day">16</div>
-                    <div class="calendar-day">17</div>
-                    <div class="calendar-day">18</div>
-                    <div class="calendar-day">19</div>
-                    <div class="calendar-day">20</div>
-                    <div class="calendar-day">21</div>
-
-                    <div class="calendar-day">22</div>
-                    <div class="calendar-day">23</div>
-                    <div class="calendar-day">24</div>
-                    <div class="calendar-day">25</div>
-                    <div class="calendar-day">26</div>
-                    <div class="calendar-day">27</div>
-                    <div class="calendar-day">28</div>
-
-                    <div class="calendar-day">29</div>
-                    <div class="calendar-day">30</div>
-                    <div class="calendar-day">31</div>
-                    <div class="calendar-day"></div>
-                    <div class="calendar-day"></div>
-                    <div class="calendar-day"></div>
-                    <div class="calendar-day"></div>
-                </div>
+                <div id="eventsList"></div>
             </div>
         </div>
     </section>
@@ -758,6 +558,105 @@ nav ul li a:hover:after {
             mobileMenuBtn.addEventListener('click', function() {
                 navMenu.classList.toggle('show');
             });
+
+            // ---- Dynamic Calendar ----
+            // Add school events here as "YYYY-MM-DD": "Event name".
+            // Add multi-day events as separate entries, one per date.
+            const schoolEvents = {
+                "2026-01-12": "Parent-Teacher Meeting",
+                "2026-01-15": "Science Fair",
+                "2026-01-20": "Sports Day",
+                "2026-01-21": "Sports Day",
+                "2026-01-28": "Art Exhibition",
+                "2026-02-18": "Ramadan Start",
+                "2026-02-27": "Cultural Day",
+                "2026-03-06": "Independence Day"
+            };
+
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"];
+
+            function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+            function dateKey(year, month, day) {
+                return year + '-' + pad(month + 1) + '-' + pad(day);
+            }
+
+            function buildMonth(year, month, todayKey) {
+                const firstDay = new Date(year, month, 1).getDay();
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+                let html = '<div class="calendar-container">';
+                html += '<div class="calendar-header"><h3>' + monthNames[month] + ' ' + year + '</h3></div>';
+                html += '<div class="calendar-grid">';
+                ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].forEach(function(d) {
+                    html += '<div class="calendar-day-header">' + d + '</div>';
+                });
+
+                for (let i = 0; i < firstDay; i++) {
+                    html += '<div class="calendar-day empty"></div>';
+                }
+
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const key = dateKey(year, month, day);
+                    const isToday = key === todayKey;
+                    const eventName = schoolEvents[key];
+                    let classes = 'calendar-day';
+                    if (eventName) classes += ' event';
+                    if (isToday) classes += ' today';
+                    html += '<div class="' + classes + '">' + day;
+                    if (eventName) html += '<br><small>' + eventName + '</small>';
+                    html += '</div>';
+                }
+
+                const totalCells = firstDay + daysInMonth;
+                const trailing = (7 - (totalCells % 7)) % 7;
+                for (let i = 0; i < trailing; i++) {
+                    html += '<div class="calendar-day empty"></div>';
+                }
+
+                html += '</div></div>';
+                return html;
+            }
+
+            function renderCalendar() {
+                const today = new Date();
+                const todayKey = dateKey(today.getFullYear(), today.getMonth(), today.getDate());
+                let html = '';
+                for (let i = 0; i < 3; i++) {
+                    const d = new Date(today.getFullYear(), today.getMonth() + i, 1);
+                    html += buildMonth(d.getFullYear(), d.getMonth(), todayKey);
+                }
+                document.getElementById('calendarMonths').innerHTML = html;
+
+                // Upcoming events: today onward, soonest first
+                const upcoming = Object.keys(schoolEvents)
+                    .filter(function(key) { return key >= todayKey; })
+                    .sort()
+                    .slice(0, 5);
+
+                const eventsList = document.getElementById('eventsList');
+                if (upcoming.length === 0) {
+                    eventsList.innerHTML = '<p style="text-align:center; color:#777;">No upcoming events scheduled yet. Check back soon!</p>';
+                    return;
+                }
+
+                let eventsHtml = '';
+                upcoming.forEach(function(key) {
+                    const parts = key.split('-');
+                    const y = parseInt(parts[0], 10);
+                    const m = parseInt(parts[1], 10) - 1;
+                    const d = parseInt(parts[2], 10);
+                    const monthAbbr = monthNames[m].slice(0, 3).toUpperCase();
+                    eventsHtml += '<div class="event-item">';
+                    eventsHtml += '<div class="event-date"><div class="day">' + d + '</div><div>' + monthAbbr + '</div></div>';
+                    eventsHtml += '<div class="event-details"><h4>' + schoolEvents[key] + '</h4></div>';
+                    eventsHtml += '</div>';
+                });
+                eventsList.innerHTML = eventsHtml;
+            }
+
+            renderCalendar();
         });
     </script>
 </body>
