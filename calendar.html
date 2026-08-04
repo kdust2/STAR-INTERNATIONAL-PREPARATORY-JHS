@@ -10,16 +10,16 @@
         /* Calendar-specific styles (unique to this page) */
         .calendar-container {
             background: white;
-            border-radius: 10px;
+            border-radius: var(--radius-lg);
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-md);
             margin-bottom: 2rem;
         }
 
         .calendar-header {
             background: var(--blue);
             color: white;
-            padding: 1rem;
+            padding: 1.1rem;
             text-align: center;
         }
 
@@ -48,6 +48,7 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
+            transition: background 0.2s var(--ease);
         }
 
         .calendar-day.event {
@@ -59,7 +60,7 @@
             background: var(--blue);
             color: white;
             font-weight: bold;
-            border-radius: 5px;
+            border-radius: var(--radius-sm);
         }
 
         .calendar-day.today small {
