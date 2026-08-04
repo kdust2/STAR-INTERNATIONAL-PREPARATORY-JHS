@@ -235,7 +235,8 @@
             animation: gradient 18s ease infinite;
             color: white;
             text-align: center;
-            padding: 6rem 0 5rem;
+            padding: 7rem 0 5rem;
+            margin-top: -7rem;
             position: relative;
             overflow: hidden;
 }
