@@ -952,20 +952,41 @@ textarea:focus-visible,
 
 /* Nav dropdown: legal pages nested under About Us */
 nav ul li.has-submenu {
-    display: flex;
-    align-items: center;
     position: relative;
 }
 .submenu-toggle {
     background: none;
     border: none;
-    color: inherit;
     cursor: pointer;
-    padding: 0 0.35rem;
-    font-size: 0.7rem;
-    line-height: 1;
+    color: white;
+    font: inherit;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0;
+    position: relative;
+    transition: color 0.2s;
+}
+.submenu-toggle:hover,
+.submenu-toggle:focus-visible {
+    color: var(--yellow);
+}
+.submenu-toggle:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--yellow);
+    left: 0;
+    bottom: -5px;
+    transition: width 0.2s;
+}
+.submenu-toggle:hover:after {
+    width: 100%;
 }
 .submenu-toggle i {
+    font-size: 0.7rem;
     transition: transform 0.2s var(--ease);
 }
 .submenu-toggle[aria-expanded="true"] i {
@@ -1012,15 +1033,12 @@ ul.submenu.show {
 
 @media (max-width: 768px) {
     nav ul li.has-submenu {
-        flex-direction: column;
-        align-items: center;
         width: 100%;
-        position: relative;
+        text-align: center;
     }
     .submenu-toggle {
-        position: absolute;
-        right: 30%;
-        top: 0.4rem;
+        justify-content: center;
+        width: 100%;
     }
     ul.submenu.show {
         width: 100%;
