@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="Style.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <!-- Header & Navigation -->
     <header>
         <div class="container header-container">
@@ -16,10 +17,10 @@
                 <h1>Star <span>International Preparatory</span> & JHS</h1>
             </div>
             <nav>
-                <button class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
+                <button class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
                 </button>
-                <ul>
+                <ul id="primary-nav">
                     <li><a href="index.html" class="nav-link">Home</a></li>
                     <li><a href="about.html" class="nav-link">About Us</a></li>
                     <li><a href="students.html" class="nav-link">Student Life</a></li>
@@ -31,7 +32,7 @@
     </header>
 
     <!-- Student Life Page -->
-    <section id="students" class="page-content active">
+    <section id="main-content" class="page-content active">
         <div class="container" style="padding-top: 2rem;">
             <h2 class="section-title">Student Life at Star International Preparatory & JHS</h2>
             <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">At Star International Preparatory & JHS, we believe that education extends beyond the classroom. Our students enjoy a rich array of activities that promote holistic development.</p>
@@ -155,15 +156,25 @@
                         <li><a href="application.html">Application</a></li>
                     </ul>
                 </div>
+
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+                        <li><a href="refund-policy.html">Refund Policy</a></li>
+                    </ul>
+                </div>
                 
                 <div class="footer-column">
                     <h3>Follow Us</h3>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Facebook (link coming soon)"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Twitter (link coming soon)"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Instagram (link coming soon)"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="LinkedIn (link coming soon)"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="YouTube (link coming soon)"><i class="fab fa-youtube" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
@@ -176,7 +187,7 @@
 
     <!-- Lightbox for fullscreen images -->
     <div class="lightbox-overlay" id="lightboxOverlay">
-        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close image viewer">&times;</button>
         <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBTAA7" alt="" id="lightboxImage">
     </div>
 
@@ -188,7 +199,8 @@
 
             // Mobile menu toggle
             mobileMenuBtn.addEventListener('click', function() {
-                navMenu.classList.toggle('show');
+                const isOpen = navMenu.classList.toggle('show');
+                mobileMenuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
             });
 
             // Lightbox: click a gallery image to view it fullscreen
@@ -196,11 +208,25 @@
             const lightboxImage = document.getElementById('lightboxImage');
             const lightboxClose = document.getElementById('lightboxClose');
 
-            document.querySelectorAll('.gallery-item img').forEach(function(img) {
-                img.addEventListener('click', function() {
+            document.querySelectorAll('.gallery-item').forEach(function(item) {
+                item.setAttribute('tabindex', '0');
+                item.setAttribute('role', 'button');
+                const img = item.querySelector('img');
+                item.setAttribute('aria-label', 'View larger image: ' + (img ? img.alt : 'photo'));
+
+                function openLightbox() {
                     lightboxImage.src = img.src;
                     lightboxImage.alt = img.alt;
                     lightboxOverlay.classList.add('active');
+                    lightboxClose.focus();
+                }
+
+                item.addEventListener('click', openLightbox);
+                item.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        openLightbox();
+                    }
                 });
             });
 

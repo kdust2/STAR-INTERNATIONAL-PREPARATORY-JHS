@@ -888,3 +888,64 @@ html {
 .gallery-item {
     cursor: zoom-in;
 }
+
+/* Accessibility: skip link */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--dark);
+    color: white;
+    padding: 0.75rem 1.25rem;
+    z-index: 2000;
+    border-radius: 0 0 6px 0;
+}
+.skip-link:focus {
+    left: 0;
+}
+
+/* Accessibility: visible focus states for keyboard users */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.gallery-item:focus-visible {
+    outline: 3px solid var(--yellow);
+    outline-offset: 2px;
+}
+
+/* Legal pages */
+.legal-content {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 7rem 1.5rem 4rem;
+    line-height: 1.7;
+}
+.legal-content h2 {
+    margin-bottom: 0.5rem;
+}
+.legal-content .legal-updated {
+    color: #666;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+.legal-content h3 {
+    color: var(--blue);
+    margin: 2rem 0 0.75rem;
+}
+.legal-content p, .legal-content li {
+    margin-bottom: 0.85rem;
+}
+.legal-content ul {
+    margin-left: 1.5rem;
+}
+.legal-content a {
+    color: var(--blue);
+}
+.legal-placeholder {
+    background: #fff9e6;
+    border-left: 3px solid var(--yellow);
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+}
