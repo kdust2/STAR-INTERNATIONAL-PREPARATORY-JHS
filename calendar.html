@@ -178,7 +178,18 @@
                 </button>
                 <ul id="primary-nav">
                     <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li class="has-submenu">
+                        <a href="about.html" class="nav-link">About Us</a>
+                        <button class="submenu-toggle" type="button" aria-expanded="false" aria-controls="about-submenu" aria-label="Show legal pages under About Us">
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <ul class="submenu" id="about-submenu">
+                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="terms.html">Terms & Conditions</a></li>
+                            <li><a href="cookie-policy.html">Cookie Policy</a></li>
+                            <li><a href="refund-policy.html">Refund Policy</a></li>
+                        </ul>
+                    </li>
                     <li><a href="students.html" class="nav-link">Student Life</a></li>
                     <li><a href="calendar.html" class="nav-link">Calendar</a></li>
                     <li><a href="application.html" class="nav-link">Application</a></li>
@@ -217,20 +228,18 @@
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
+                        <li>
+                            <a href="about.html">About Us</a>
+                            <ul class="footer-sublist">
+                                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                                <li><a href="terms.html">Terms & Conditions</a></li>
+                                <li><a href="cookie-policy.html">Cookie Policy</a></li>
+                                <li><a href="refund-policy.html">Refund Policy</a></li>
+                            </ul>
+                        </li>
                         <li><a href="students.html">Student Life</a></li>
                         <li><a href="calendar.html">School Calendar</a></li>
                         <li><a href="application.html">Application</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column">
-                    <h3>Legal</h3>
-                    <ul>
-                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="terms.html">Terms & Conditions</a></li>
-                        <li><a href="cookie-policy.html">Cookie Policy</a></li>
-                        <li><a href="refund-policy.html">Refund Policy</a></li>
                     </ul>
                 </div>
                 
@@ -262,6 +271,26 @@
             mobileMenuBtn.addEventListener('click', function() {
                 const isOpen = navMenu.classList.toggle('show');
                 mobileMenuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
+
+            // Submenu toggle (About Us > legal pages)
+            document.querySelectorAll('.submenu-toggle').forEach(function(toggleBtn) {
+                const submenu = document.getElementById(toggleBtn.getAttribute('aria-controls'));
+                toggleBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const isOpen = submenu.classList.toggle('show');
+                    toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                });
+            });
+
+            document.addEventListener('click', function(e) {
+                document.querySelectorAll('.submenu.show').forEach(function(sm) {
+                    const btn = document.querySelector('[aria-controls="' + sm.id + '"]');
+                    if (!sm.contains(e.target) && btn && !btn.contains(e.target)) {
+                        sm.classList.remove('show');
+                        btn.setAttribute('aria-expanded', 'false');
+                    }
+                });
             });
 
             // ---- Dynamic Calendar ----

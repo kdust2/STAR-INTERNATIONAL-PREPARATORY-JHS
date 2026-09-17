@@ -949,3 +949,98 @@ textarea:focus-visible,
     padding: 0.75rem 1rem;
     font-size: 0.95rem;
 }
+
+/* Nav dropdown: legal pages nested under About Us */
+nav ul li.has-submenu {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.submenu-toggle {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    padding: 0 0.35rem;
+    font-size: 0.7rem;
+    line-height: 1;
+}
+.submenu-toggle i {
+    transition: transform 0.2s var(--ease);
+}
+.submenu-toggle[aria-expanded="true"] i {
+    transform: rotate(180deg);
+}
+ul.submenu {
+    list-style: none;
+    display: none;
+    flex-direction: column;
+}
+ul.submenu.show {
+    display: flex;
+}
+
+@media (min-width: 769px) {
+    nav ul li.has-submenu ul.submenu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 210px;
+        background: var(--blue);
+        border-radius: var(--radius-sm);
+        box-shadow: var(--shadow-md);
+        padding: 0.5rem 0;
+        margin-top: 0.9rem;
+        z-index: 1001;
+    }
+    nav ul li.has-submenu ul.submenu li {
+        margin: 0;
+    }
+    nav ul li.has-submenu ul.submenu li a {
+        display: block;
+        padding: 0.6rem 1.25rem;
+        white-space: nowrap;
+    }
+    nav ul li.has-submenu ul.submenu li a:after {
+        display: none;
+    }
+    nav ul li.has-submenu:hover > ul.submenu,
+    nav ul li.has-submenu:focus-within > ul.submenu {
+        display: flex;
+    }
+}
+
+@media (max-width: 768px) {
+    nav ul li.has-submenu {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        position: relative;
+    }
+    .submenu-toggle {
+        position: absolute;
+        right: 30%;
+        top: 0.4rem;
+    }
+    ul.submenu.show {
+        width: 100%;
+        padding-top: 0.5rem;
+        align-items: center;
+    }
+    ul.submenu li a {
+        padding: 0.4rem 0;
+        font-size: 0.9rem;
+        opacity: 0.9;
+    }
+}
+
+/* Footer: legal pages nested under About Us */
+.footer-sublist {
+    list-style: none;
+    margin: 0.4rem 0 0.6rem 1rem;
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+.footer-sublist li {
+    margin-bottom: 0.3rem;
+}
