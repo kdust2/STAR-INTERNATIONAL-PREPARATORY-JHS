@@ -1027,3 +1027,17 @@ nav ul li.has-submenu ul.submenu li a:after {
         opacity: 0.9;
     }
 }
+
+/* Hidden state for elements waiting to reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+}
+
+/* Active state when element scrolls into view */
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
